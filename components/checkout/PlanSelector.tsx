@@ -7,10 +7,10 @@ interface PlanSelectorProps {
   plans: Plan[];
   selectedPlanId: string;
   onSelect: (planId: string) => void;
+  actionSlot?: React.ReactNode;
 }
 
-export function PlanSelector({ plans, selectedPlanId, onSelect }: PlanSelectorProps) {
-  // Mapa visual para os planos sugeridos
+export function PlanSelector({ plans, selectedPlanId, onSelect, actionSlot }: PlanSelectorProps) {
   const planVisuals: Record<string, { icon: React.ReactNode, bg: string, border: string, text: string }> = {
     'Aliado Brisa': {
       icon: <Wind className="w-5 h-5" />,
@@ -47,7 +47,7 @@ export function PlanSelector({ plans, selectedPlanId, onSelect }: PlanSelectorPr
         Escolha o seu nível de impacto
       </h2>
 
-      <div className="grid gap-3 md:grid-cols-3 pt-4">
+      <div className="grid gap-1 md:grid-cols-3 pt-4">
         {plans.map((plan) => {
           const isSelected = selectedPlanId === plan.id;
           const visual = planVisuals[plan.name] || defaultVisual;
@@ -58,14 +58,14 @@ export function PlanSelector({ plans, selectedPlanId, onSelect }: PlanSelectorPr
               key={plan.id}
               onClick={() => onSelect(plan.id)}
               className={`
-                relative cursor-pointer transition-all duration-300 rounded-xl p-4 border-2 flex flex-col h-full
+                relative cursor-pointer transition-all duration-300 rounded-2xl p-5 border-2 flex flex-col h-full
                 ${isSelected
                   ? `border-pipa-orange bg-pipa-orange/5 shadow-md shadow-pipa-orange/5 scale-[1.01]`
                   : `border-slate-200 bg-white hover:border-pipa-orange/20 hover:shadow-sm`}
               `}
             >
               {isRecommended && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-pipa-orange text-white text-[9px] font-bold px-2 py-1 rounded-full shadow-sm z-10 whitespace-nowrap">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-pipa-orange text-white text-[12px] font-bold px-2 py-1 rounded-full shadow-sm z-10 whitespace-nowrap">
                   MAIS POPULAR
                 </div>
               )}
@@ -80,14 +80,14 @@ export function PlanSelector({ plans, selectedPlanId, onSelect }: PlanSelectorPr
                 {visual.icon}
               </div>
 
-              <h3 className="text-base font-bold text-slate-800 mb-0.5">{plan.name}</h3>
+              <h3 className="text-xl font-bold text-slate-800 mb-0.5">{plan.name}</h3>
 
               <div className="mb-1">
                 <span className="text-2xl font-extrabold text-slate-900">
                   R$ {plan.amount.toString().replace('.', ',')}
                 </span>
                 <span className="text-xs text-slate-500 font-medium">/mês</span>
-                <div className="text-[10px] text-pipa-orange font-medium mt-0.5">
+                <div className="text-[15px] text-pipa-orange font-medium mt-0.5">
                   Equivale a R$ {(plan.amount / 30).toFixed(2).replace('.', ',')}/dia
                 </div>
               </div>
@@ -97,22 +97,28 @@ export function PlanSelector({ plans, selectedPlanId, onSelect }: PlanSelectorPr
       </div>
 
       {selectedPlan && (
-        <div className="space-y-6">
-          <div className="mt-6 p-5 rounded-2xl bg-pipa-orange/5 border border-pipa-orange/20 animate-in fade-in slide-in-from-bottom-2 duration-300">
-            <p className="text-sm font-semibold text-slate-800 mb-1">Impacto do seu apoio:</p>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              {selectedPlan.description}
-            </p>
-          </div>
-
-          <div className="pt-6 border-t border-slate-100/80">
-            <h4 className="text-sm font-extrabold text-slate-400 uppercase tracking-widest mb-4 text-center">
-              O que dizem sobre nós
-            </h4>
-            <TestimonialCarousel />
-          </div>
+        <div className="mt-6 p-5 rounded-2xl bg-pipa-orange/5 border border-pipa-orange/20 animate-in fade-in slide-in-from-bottom-2 duration-300">
+          <p className="text-sm font-semibold text-slate-800 mb-1">Impacto do seu apoio:</p>
+          <p className="text-sm text-slate-600 leading-relaxed">
+            {selectedPlan.description}
+          </p>
         </div>
       )}
+
+      {/* Slot para botão + política — fixo acima do carrossel */}
+      {actionSlot && (
+        <div className="mt-4">
+          {actionSlot}
+        </div>
+      )}
+
+      {/* Carrossel de depoimentos — sempre abaixo do botão */}
+      <div className="pt-6 border-t border-slate-100/80">
+        <h4 className="text-sm font-extrabold text-slate-400 uppercase tracking-widest mb-4 text-center">
+          O que a comunidade acha
+        </h4>
+        <TestimonialCarousel />
+      </div>
     </div>
   );
 }
