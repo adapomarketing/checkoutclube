@@ -1,7 +1,6 @@
 import React from 'react';
 import { CheckoutForm } from '@/components/checkout/CheckoutForm';
 import { SocialProof } from '@/components/checkout/SocialProof';
-import { TestimonialCarousel } from '@/components/checkout/TestimonialCarousel';
 import { supabaseAdmin } from '@/lib/supabase/server';
 import { Plan } from '@/types';
 import Image from 'next/image';
@@ -79,10 +78,6 @@ export default async function AliancaDosVentosPage() {
                 allowFullScreen
               ></iframe>
             </div>
-          </div>
-
-          <div className="hidden lg:block">
-            <TestimonialCarousel />
           </div>
         </div>
 

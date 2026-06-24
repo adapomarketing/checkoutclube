@@ -1,6 +1,7 @@
 import React from 'react';
 import { Plan } from '@/types';
 import { CheckCircle2, Wind, Cloud, CloudLightning } from 'lucide-react';
+import { TestimonialCarousel } from './TestimonialCarousel';
 
 interface PlanSelectorProps {
   plans: Plan[];
@@ -96,11 +97,20 @@ export function PlanSelector({ plans, selectedPlanId, onSelect }: PlanSelectorPr
       </div>
 
       {selectedPlan && (
-        <div className="mt-6 p-5 rounded-2xl bg-pipa-orange/5 border border-pipa-orange/20 animate-in fade-in slide-in-from-bottom-2 duration-300">
-          <p className="text-sm font-semibold text-slate-800 mb-1">Impacto do seu apoio:</p>
-          <p className="text-sm text-slate-600 leading-relaxed">
-            {selectedPlan.description}
-          </p>
+        <div className="space-y-6">
+          <div className="mt-6 p-5 rounded-2xl bg-pipa-orange/5 border border-pipa-orange/20 animate-in fade-in slide-in-from-bottom-2 duration-300">
+            <p className="text-sm font-semibold text-slate-800 mb-1">Impacto do seu apoio:</p>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              {selectedPlan.description}
+            </p>
+          </div>
+          
+          <div className="pt-6 border-t border-slate-100/80">
+            <h4 className="text-sm font-extrabold text-slate-400 uppercase tracking-widest mb-4 text-center">
+              O que dizem sobre nós
+            </h4>
+            <TestimonialCarousel />
+          </div>
         </div>
       )}
     </div>
