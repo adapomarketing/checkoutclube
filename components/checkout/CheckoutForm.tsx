@@ -193,8 +193,53 @@ export function CheckoutForm({ plans }: CheckoutFormProps) {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8 bg-white/95 backdrop-blur-md rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-slate-100 animate-spring-up" style={{ animationDelay: '200ms' }}>
-      <StepIndicator currentStep={step} />
+    <>
+      {/* Modal de Política de Privacidade */}
+      {showPolicy && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 animate-in fade-in duration-300" onClick={() => setShowPolicy(false)}>
+          <div
+            className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[80vh] flex flex-col animate-in fade-in zoom-in-95 duration-300"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between p-6 border-b border-slate-100">
+              <h3 className="text-xl font-bold text-slate-800">Política de Privacidade</h3>
+              <button
+                type="button"
+                onClick={() => setShowPolicy(false)}
+                className="p-2 rounded-full hover:bg-slate-100 transition-colors text-slate-400 hover:text-slate-600"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <div className="p-6 overflow-y-auto text-sm text-slate-600 leading-relaxed space-y-4">
+              <p>Sua privacidade na internet é de extrema importância para nós. Esta política de privacidade define como Instituto Ádapo coleta, usa e armazena dados pessoais em nossos sistemas. Ao visitá-los você estará concordando com as práticas descritas nesta política.</p>
+              <p>Nenhum dado pessoal é coletado sem que você informe pelo preenchimento de nossos formulários de cadastramento. Com este preenchimento você permite a coleta das informações e sua manutenção nos bancos de dados.</p>
+              <p>As informações coletadas em hipótese alguma serão vendidas ou compartilhadas com quaisquer outras instituições, empresas ou pessoas sem seu consentimento. Para efeitos de pesquisa, seus dados são compartilhados em anonimato. Somente pessoas autorizadas têm acesso a essas informações.</p>
+              <p>Qualquer informação fornecida por usuários ao Instituto Ádapo é tratada com o máximo de cuidado e segurança e não será utilizada para fins não definidos nesta política de privacidade, sempre sendo utilizada para fins expressamente consentidos.</p>
+              <p>Não instalamos ou ativamos nenhum tipo de programa, script ou similares que possam de alguma forma comprometer sua segurança ou analisar suas informações sem sua autorização.</p>
+              <p>Ao entrar em contato conosco, seja por nossas plataformas ou canais de contato, nós podemos coletar seu nome, e-mail, número de telefone fixo ou celular, endereço e outros dados solicitados pelo formulário. Ao se tornar um doador, além dos dados descritos anteriormente, precisaremos coletar seu CPF, dados de cartão de crédito, caso opte por este meio de pagamento, e a sua data de nascimento, para confirmar que você tem mais de 18 anos. Seus dados de cartão de crédito são tokenizados em nossas soluções para preservar sua segurança ao processar as doações.</p>
+              <p>Nós usamos seus dados para lidar com suas dúvidas e solicitações, confirmar seu cadastro, enviar comunicações, processar e reconhecer suas doações, manter um registro de seu relacionamento, captar recursos e, de maneira anonimizada, realizar estudos e pesquisas.</p>
+              <p>Em nosso site utilizamos cookies de forma anônima, portanto não armazenamos suas informações pessoais e dados de acesso.</p>
+              <p>A qualquer momento você poderá solicitar cópia de qualquer informação pessoal que tenhamos a seu respeito, cancelar ou modificar suas informações entrando em contato com <a href="mailto:politica+institutoadapo@gmail.com" className="text-pipa-orange underline">politica+institutoadapo@gmail.com</a>.</p>
+              <p>Caso não deseje mais receber nossas comunicações, você pode cancelar o cadastro de seu endereço de e-mail através de <a href="mailto:politica+institutoadapo@gmail.com" className="text-pipa-orange underline">politica+institutoadapo@gmail.com</a>. Assim, seu contato será retirado de nossa base.</p>
+              <p>Quaisquer mudanças feitas a esta política de privacidade serão publicadas e estarão disponíveis nesta mesma página. Visite-a sempre que necessário.</p>
+              <p>Se você tiver alguma dúvida, entre em contato conosco através de <a href="mailto:politica+institutoadapo@gmail.com" className="text-pipa-orange underline">politica+institutoadapo@gmail.com</a>.</p>
+            </div>
+            <div className="p-6 border-t border-slate-100 flex justify-end">
+              <button
+                type="button"
+                onClick={() => { setPolicyAccepted(true); setShowPolicy(false); }}
+                className="px-6 py-3 bg-pipa-orange text-white font-bold rounded-xl hover:bg-pipa-orange/90 transition-all"
+              >
+                Li e concordo
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <div className="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8 bg-white/95 backdrop-blur-md rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-slate-100 animate-spring-up" style={{ animationDelay: '200ms' }}>
+        <StepIndicator currentStep={step} />
 
       {error && (
         <div className="mb-6 p-4 bg-red-50 border-l-4 border-red-500 text-red-700 rounded-r-lg flex items-start">
@@ -250,49 +295,7 @@ export function CheckoutForm({ plans }: CheckoutFormProps) {
           />
         </div>
 
-        {/* Modal de Política de Privacidade */}
-        {showPolicy && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4" onClick={() => setShowPolicy(false)}>
-            <div
-              className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[80vh] flex flex-col animate-in fade-in zoom-in-95 duration-300"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="flex items-center justify-between p-6 border-b border-slate-100">
-                <h3 className="text-xl font-bold text-slate-800">Política de Privacidade</h3>
-                <button
-                  type="button"
-                  onClick={() => setShowPolicy(false)}
-                  className="p-2 rounded-full hover:bg-slate-100 transition-colors text-slate-400 hover:text-slate-600"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-              <div className="p-6 overflow-y-auto text-sm text-slate-600 leading-relaxed space-y-4">
-                <p>Sua privacidade na internet é de extrema importância para nós. Esta política de privacidade define como Instituto Ádapo coleta, usa e armazena dados pessoais em nossos sistemas. Ao visitá-los você estará concordando com as práticas descritas nesta política.</p>
-                <p>Nenhum dado pessoal é coletado sem que você informe pelo preenchimento de nossos formulários de cadastramento. Com este preenchimento você permite a coleta das informações e sua manutenção nos bancos de dados.</p>
-                <p>As informações coletadas em hipótese alguma serão vendidas ou compartilhadas com quaisquer outras instituições, empresas ou pessoas sem seu consentimento. Para efeitos de pesquisa, seus dados são compartilhados em anonimato. Somente pessoas autorizadas têm acesso a essas informações.</p>
-                <p>Qualquer informação fornecida por usuários ao Instituto Ádapo é tratada com o máximo de cuidado e segurança e não será utilizada para fins não definidos nesta política de privacidade, sempre sendo utilizada para fins expressamente consentidos.</p>
-                <p>Não instalamos ou ativamos nenhum tipo de programa, script ou similares que possam de alguma forma comprometer sua segurança ou analisar suas informações sem sua autorização.</p>
-                <p>Ao entrar em contato conosco, seja por nossas plataformas ou canais de contato, nós podemos coletar seu nome, e-mail, número de telefone fixo ou celular, endereço e outros dados solicitados pelo formulário. Ao se tornar um doador, além dos dados descritos anteriormente, precisaremos coletar seu CPF, dados de cartão de crédito, caso opte por este meio de pagamento, e a sua data de nascimento, para confirmar que você tem mais de 18 anos. Seus dados de cartão de crédito são tokenizados em nossas soluções para preservar sua segurança ao processar as doações.</p>
-                <p>Nós usamos seus dados para lidar com suas dúvidas e solicitações, confirmar seu cadastro, enviar comunicações, processar e reconhecer suas doações, manter um registro de seu relacionamento, captar recursos e, de maneira anonimizada, realizar estudos e pesquisas.</p>
-                <p>Em nosso site utilizamos cookies de forma anônima, portanto não armazenamos suas informações pessoais e dados de acesso.</p>
-                <p>A qualquer momento você poderá solicitar cópia de qualquer informação pessoal que tenhamos a seu respeito, cancelar ou modificar suas informações entrando em contato com <a href="mailto:politica+institutoadapo@gmail.com" className="text-pipa-orange underline">politica+institutoadapo@gmail.com</a>.</p>
-                <p>Caso não deseje mais receber nossas comunicações, você pode cancelar o cadastro de seu endereço de e-mail através de <a href="mailto:politica+institutoadapo@gmail.com" className="text-pipa-orange underline">politica+institutoadapo@gmail.com</a>. Assim, seu contato será retirado de nossa base.</p>
-                <p>Quaisquer mudanças feitas a esta política de privacidade serão publicadas e estarão disponíveis nesta mesma página. Visite-a sempre que necessário.</p>
-                <p>Se você tiver alguma dúvida, entre em contato conosco através de <a href="mailto:politica+institutoadapo@gmail.com" className="text-pipa-orange underline">politica+institutoadapo@gmail.com</a>.</p>
-              </div>
-              <div className="p-6 border-t border-slate-100 flex justify-end">
-                <button
-                  type="button"
-                  onClick={() => { setPolicyAccepted(true); setShowPolicy(false); }}
-                  className="px-6 py-3 bg-pipa-orange text-white font-bold rounded-xl hover:bg-pipa-orange/90 transition-all"
-                >
-                  Li e concordo
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
+
 
         {/* STEP 2: Dados Pessoais */}
         <div className={`${step === 2 ? 'block' : 'hidden'} animate-in fade-in slide-in-from-bottom-4 duration-500`}>
@@ -496,5 +499,6 @@ export function CheckoutForm({ plans }: CheckoutFormProps) {
         </div>
       </form>
     </div>
-  );
+  </>
+);
 }
