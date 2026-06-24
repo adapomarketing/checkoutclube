@@ -12,20 +12,20 @@ interface PlanSelectorProps {
 export function PlanSelector({ plans, selectedPlanId, onSelect }: PlanSelectorProps) {
   // Mapa visual para os planos sugeridos
   const planVisuals: Record<string, { icon: React.ReactNode, bg: string, border: string, text: string }> = {
-    'Aliado Brisa': { 
-      icon: <Wind className="w-6 h-6" />, 
+    'Aliado Brisa': {
+      icon: <Wind className="w-5 h-5" />,
       bg: 'bg-emerald-50 hover:bg-emerald-100',
       border: 'border-emerald-200',
       text: 'text-emerald-700'
     },
-    'Aliado Vento': { 
-      icon: <Cloud className="w-6 h-6" />, 
+    'Aliado Vento': {
+      icon: <Cloud className="w-5 h-5" />,
       bg: 'bg-indigo-50 hover:bg-indigo-100',
       border: 'border-indigo-200',
       text: 'text-indigo-700'
     },
-    'Aliado Tempestade': { 
-      icon: <CloudLightning className="w-6 h-6" />, 
+    'Aliado Tempestade': {
+      icon: <CloudLightning className="w-5 h-5" />,
       bg: 'bg-violet-50 hover:bg-violet-100',
       border: 'border-violet-200',
       text: 'text-violet-700'
@@ -33,7 +33,7 @@ export function PlanSelector({ plans, selectedPlanId, onSelect }: PlanSelectorPr
   };
 
   const defaultVisual = {
-    icon: <CheckCircle2 className="w-6 h-6" />,
+    icon: <CheckCircle2 className="w-5 h-5" />,
     bg: 'bg-slate-50 hover:bg-slate-100',
     border: 'border-slate-200',
     text: 'text-slate-700'
@@ -43,52 +43,52 @@ export function PlanSelector({ plans, selectedPlanId, onSelect }: PlanSelectorPr
 
   return (
     <div className="space-y-4">
-      <h2 className="text-2xl font-bold text-slate-800 text-center mb-6">
+      <h2 className="text-xl font-bold text-slate-800 text-center mb-4">
         Escolha o seu nível de impacto
       </h2>
-      
-      <div className="grid gap-4 md:grid-cols-3 pt-6">
+
+      <div className="grid gap-3 md:grid-cols-3 pt-4">
         {plans.map((plan) => {
           const isSelected = selectedPlanId === plan.id;
           const visual = planVisuals[plan.name] || defaultVisual;
           const isRecommended = plan.name === 'Aliado Vento';
-          
+
           return (
-            <div 
+            <div
               key={plan.id}
               onClick={() => onSelect(plan.id)}
               className={`
-                relative cursor-pointer transition-all duration-300 rounded-2xl p-6 border-2 flex flex-col h-full
-                ${isSelected 
-                  ? `border-pipa-orange bg-pipa-orange/5 shadow-lg shadow-pipa-orange/10 scale-[1.02]` 
-                  : `border-slate-200 bg-white hover:border-pipa-orange/30 hover:shadow-md hover:scale-[1.01]`}
+                relative cursor-pointer transition-all duration-300 rounded-xl p-4 border-2 flex flex-col h-full
+                ${isSelected
+                  ? `border-pipa-orange bg-pipa-orange/5 shadow-md shadow-pipa-orange/5 scale-[1.01]`
+                  : `border-slate-200 bg-white hover:border-pipa-orange/20 hover:shadow-sm`}
               `}
             >
               {isRecommended && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-pipa-orange text-white text-[10px] sm:text-xs font-bold px-3 py-1.5 rounded-full shadow-md z-10 whitespace-nowrap">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-pipa-orange text-white text-[9px] font-bold px-2 py-1 rounded-full shadow-sm z-10 whitespace-nowrap">
                   MAIS POPULAR
                 </div>
               )}
-              
+
               {isSelected && (
-                <div className="absolute top-4 right-4 text-pipa-orange">
-                  <CheckCircle2 className="w-6 h-6 fill-pipa-orange/20" />
+                <div className="absolute top-3 right-3 text-pipa-orange">
+                  <CheckCircle2 className="w-5 h-5 fill-pipa-orange/20" />
                 </div>
               )}
-              
-              <div className={`w-12 h-12 rounded-xl mb-4 flex items-center justify-center transition-colors ${visual.bg} ${visual.text}`}>
+
+              <div className={`w-9 h-9 rounded-lg mb-3 flex items-center justify-center transition-colors ${visual.bg} ${visual.text}`}>
                 {visual.icon}
               </div>
-              
-              <h3 className="text-xl font-bold text-slate-800 mb-1">{plan.name}</h3>
-              
-              <div className="mb-2">
-                <span className="text-3xl font-extrabold text-slate-900">
+
+              <h3 className="text-base font-bold text-slate-800 mb-0.5">{plan.name}</h3>
+
+              <div className="mb-1">
+                <span className="text-2xl font-extrabold text-slate-900">
                   R$ {plan.amount.toString().replace('.', ',')}
                 </span>
-                <span className="text-slate-500 font-medium">/mês</span>
-                <div className="text-xs text-pipa-orange font-medium mt-1">
-                  Equivale a apenas R$ {(plan.amount / 30).toFixed(2).replace('.', ',')}/dia
+                <span className="text-xs text-slate-500 font-medium">/mês</span>
+                <div className="text-[10px] text-pipa-orange font-medium mt-0.5">
+                  Equivale a R$ {(plan.amount / 30).toFixed(2).replace('.', ',')}/dia
                 </div>
               </div>
             </div>
@@ -104,7 +104,7 @@ export function PlanSelector({ plans, selectedPlanId, onSelect }: PlanSelectorPr
               {selectedPlan.description}
             </p>
           </div>
-          
+
           <div className="pt-6 border-t border-slate-100/80">
             <h4 className="text-sm font-extrabold text-slate-400 uppercase tracking-widest mb-4 text-center">
               O que dizem sobre nós
