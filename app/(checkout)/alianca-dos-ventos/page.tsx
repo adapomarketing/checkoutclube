@@ -62,6 +62,25 @@ export default async function AliancaDosVentosPage() {
             <SocialProof />
           </div>
 
+          {/* QUEM SOMOS E VÍDEO DO YOUTUBE */}
+          <div className="border-t border-slate-200/60 pt-6 flex flex-col gap-4">
+            <h3 className="text-2xl font-bold text-slate-800">Quem somos</h3>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              O <strong>Clube das Pipas</strong> é uma iniciativa do Instituto Ádapo voltada para o desenvolvimento integral de crianças e adolescentes no Novo Angelim. Promovemos acolhimento, educação complementar e cidadania através de oficinas criativas e do brincar seguro.
+            </p>
+            <div className="w-full aspect-video rounded-2xl overflow-hidden shadow-md border border-slate-100">
+              <iframe 
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/yS8L4NCFmR8?si=3Zps-4GZ9nzYpr4y" 
+                title="YouTube video player" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerPolicy="strict-origin-when-cross-origin" 
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
+
           <div className="hidden lg:block">
             <TestimonialCarousel />
           </div>

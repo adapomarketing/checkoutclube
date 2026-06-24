@@ -38,6 +38,8 @@ export function PlanSelector({ plans, selectedPlanId, onSelect }: PlanSelectorPr
     text: 'text-slate-700'
   };
 
+  const selectedPlan = plans.find(p => p.id === selectedPlanId);
+
   return (
     <div className="space-y-4">
       <h2 className="text-2xl font-bold text-slate-800 text-center mb-6">
@@ -79,7 +81,7 @@ export function PlanSelector({ plans, selectedPlanId, onSelect }: PlanSelectorPr
               
               <h3 className="text-xl font-bold text-slate-800 mb-1">{plan.name}</h3>
               
-              <div className="mb-4">
+              <div className="mb-2">
                 <span className="text-3xl font-extrabold text-slate-900">
                   R$ {plan.amount.toString().replace('.', ',')}
                 </span>
@@ -88,14 +90,19 @@ export function PlanSelector({ plans, selectedPlanId, onSelect }: PlanSelectorPr
                   Equivale a apenas R$ {(plan.amount / 30).toFixed(2).replace('.', ',')}/dia
                 </div>
               </div>
-              
-              <p className="text-sm text-slate-600 leading-relaxed flex-grow">
-                {plan.description}
-              </p>
             </div>
           );
         })}
       </div>
+
+      {selectedPlan && (
+        <div className="mt-6 p-5 rounded-2xl bg-pipa-orange/5 border border-pipa-orange/20 animate-in fade-in slide-in-from-bottom-2 duration-300">
+          <p className="text-sm font-semibold text-slate-800 mb-1">Impacto do seu apoio:</p>
+          <p className="text-sm text-slate-600 leading-relaxed">
+            {selectedPlan.description}
+          </p>
+        </div>
+      )}
     </div>
   );
 }
