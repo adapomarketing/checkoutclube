@@ -114,9 +114,6 @@ export function PlanSelector({ plans, selectedPlanId, onSelect, actionSlot }: Pl
 
       {/* Carrossel de depoimentos — sempre abaixo do botão */}
       <div className="pt-6 border-t border-slate-100/80">
-        <h4 className="text-sm font-extrabold text-slate-400 uppercase tracking-widest mb-4 text-center">
-          O que a comunidade acha
-        </h4>
         <TestimonialCarousel />
       </div>
     </div>

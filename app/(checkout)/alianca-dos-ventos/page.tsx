@@ -79,6 +79,35 @@ export default async function AliancaDosVentosPage() {
               ></iframe>
             </div>
           </div>
+
+          {/* PARCERIA ESTRATÉGICA */}
+          <div className="border-t border-slate-200/60 pt-6 flex flex-col gap-4">
+            <h3 className="text-2xl font-bold text-slate-800 flex items-center gap-2">
+              💼 Parceria Estratégica
+            </h3>
+            <div className="text-sm text-slate-600 space-y-3 leading-relaxed">
+              <p>
+                Se você representa uma empresa, pode apoiar o <strong>Instituto Ádapo</strong> de forma estratégica.
+              </p>
+              <p>
+                Criamos parcerias que conectam investimento social e desenvolvimento do território, gerando impacto real no Novo Angelim.
+              </p>
+              <p>
+                Ao se tornar uma parceira, sua organização passa a apoiar diretamente iniciativas que geram oportunidades e transformam vidas.
+              </p>
+            </div>
+            <a 
+              href="https://wa.me/5598985038023?text=Ol%C3%A1%21%20Gostaria%20de%20saber%20mais%20sobre%20as%20parcerias%20estrat%C3%A9gicas%20com%20o%20Instituto%20%C3%81dapo."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#25D366] hover:bg-[#20BA5A] text-white font-bold rounded-xl transition-all shadow-sm hover:shadow-md text-sm active:scale-[0.98] w-full sm:w-auto self-start"
+            >
+              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.248 8.477 3.517 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.963C16.59 1.981 14.119.957 11.5.957 6.062.957 1.637 5.328 1.634 10.758c-.001 1.674.452 3.3 1.311 4.757l-.955 3.486 3.652-.947zm12.64-5.32c-.313-.155-1.853-.902-2.134-1.003-.281-.101-.486-.155-.69.155-.205.31-.795.998-.97 1.199-.178.201-.354.227-.667.071-.313-.155-1.322-.482-2.52-1.54-1.312-1.157-1.785-2.036-1.942-2.31-.157-.275-.017-.424.12-.58.124-.14.281-.326.421-.49.141-.162.188-.278.281-.464.093-.186.047-.35-.024-.505-.07-.155-.69-1.637-.946-2.247-.25-.599-.5-.517-.69-.527-.178-.009-.383-.01-.589-.01-.205 0-.539.077-.821.383-.281.307-1.077 1.036-1.077 2.527s1.099 2.929 1.253 3.134c.154.205 2.162 3.266 5.24 4.568.732.31 1.303.495 1.748.634.736.231 1.407.198 1.937.12.59-.088 1.853-.747 2.115-1.432.261-.685.261-1.272.184-1.393-.077-.12-.281-.205-.595-.36z" />
+              </svg>
+              Entre em contato
+            </a>
+          </div>
         </div>
 
         {/* COLUNA DIREITA: Formulário */}
