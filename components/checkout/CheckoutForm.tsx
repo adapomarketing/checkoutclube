@@ -260,19 +260,19 @@ export function CheckoutForm({ plans }: CheckoutFormProps) {
             }}
             actionSlot={
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                <label className="flex items-start gap-2 cursor-pointer group">
+                <label className="flex items-start gap-3 cursor-pointer group">
                   <input
                     type="checkbox"
                     checked={policyAccepted}
                     onChange={(e) => setPolicyAccepted(e.target.checked)}
-                    className="mt-0.5 w-4 h-4 rounded border-slate-300 text-pipa-orange focus:ring-pipa-orange accent-pipa-orange"
+                    className="mt-0.5 w-5 h-5 rounded border-slate-300 text-pipa-orange focus:ring-pipa-orange accent-pipa-orange transition-all duration-200"
                   />
-                  <span className="text-xs text-slate-500 leading-snug">
+                  <span className="text-sm text-slate-600 leading-snug">
                     Li e concordo com a{' '}
                     <button
                       type="button"
                       onClick={(e) => { e.preventDefault(); setShowPolicy(true); }}
-                      className="text-pipa-orange underline underline-offset-2 hover:text-pipa-orange/80 font-medium"
+                      className="text-pipa-orange underline underline-offset-2 hover:text-pipa-orange/80 font-bold"
                     >
                       Política de Privacidade
                     </button>

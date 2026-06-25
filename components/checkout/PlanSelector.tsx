@@ -98,8 +98,8 @@ export function PlanSelector({ plans, selectedPlanId, onSelect, actionSlot }: Pl
 
       {selectedPlan && (
         <div className="mt-6 p-5 rounded-2xl bg-pipa-orange/5 border border-pipa-orange/20 animate-in fade-in slide-in-from-bottom-2 duration-300">
-          <p className="text-sm font-semibold text-slate-800 mb-1">Impacto do seu apoio:</p>
-          <p className="text-sm text-slate-600 leading-relaxed">
+          <p className="text-base font-bold text-slate-800 mb-1">Impacto do seu apoio:</p>
+          <p className="text-[15px] text-slate-600 leading-relaxed">
             {selectedPlan.description}
           </p>
         </div>
